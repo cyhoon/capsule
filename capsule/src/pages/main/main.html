@@ -1,0 +1,48 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>YoungHoon</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="openPage(homePage)">
+        Home
+      </button>
+      <button ion-item (click)="openPage(friendsPage)">
+        Friends
+      </button>
+      <button ion-item (click)="openPage(eventsPage)">
+        Events
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Main
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <div class="">
+    <h1>Welcome to {{userDetails.user_name}} </h1>
+    <h1>Your id : {{userDetails.user_id}}</h1>
+    <h1>Your name : {{userDetails.user_name}}</h1>
+  </div>
+
+  <button ion-button block color="dark" (click)="push()">캡슐 심기</button>
+  <button ion-button block color="dark">캡슐 목록보기</button>
+  <button ion-button block color="dark" (click)="logout()"><a href="home" style="color: white; text-decoration: none;">로그아웃</a></button>
+</ion-content>

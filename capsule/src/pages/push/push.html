@@ -1,0 +1,48 @@
+<!--
+  Generated template for the PushPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>타임 캡슐 심기</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <div class="form">
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label form_label">1. 캡슐 이름을 입력해주세요</span><br>
+        <input type="text" placeholder="John" class="form_element" [(ngModel)]="requestData.capsule_name">
+        <span class="input-label form_label">2. 캡슐에 들어갈 사진을 선택해주세요.</span><br>
+        <input type="text" placeholder="John" class="form_element">
+        <span class="input-label form_label">3. 함께할 친구를 선택해주세요.</span><br>
+        <input type="text" placeholder="John" class="form_element" [(ngModel)]="requestData.friends">
+        <span class="input-label form_label">4. 봉인할 기간을 선택해주세요.</span><br>
+        <ion-item>
+          <ion-label>Expire Date</ion-label>
+          <ion-datetime displayFormat="YY/MM/D" pickerFormat="YYYY/MM/D" [(ngModel)]="requestData.expiredate"></ion-datetime>
+        </ion-item>
+      </label>
+    </div>
+    <button ion-button full (click)="takePhoto()">
+      <ion-icon name="camera"></ion-icon> &nbsp;&nbsp; Take Photo
+    </button>
+    <button ion-button full (click)="capsulePut()">캡슐 심기</button>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6 *ngFor="let photo of photos; let id = index">
+          <ion-card class="block">
+            <ion-icon name="trash" class="deleteIcon" (click)="deletePhoto(index)"></ion-icon>
+            <img [src]="photo" *ngIf="photo" />
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+</ion-content>

@@ -1,0 +1,31 @@
+page-intro {
+#intro{
+    background-color: white;
+    #title{
+        text-align: center;
+        margin-top: 50%;
+        font-size: 15px;
+    }
+
+    #title span{
+        text-align: left;
+    }
+
+    #title h1{
+        font-weight: bold;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    // form scss
+    #form{
+        margin-top: 40%;
+    }
+
+    #form button{
+        background: #232323;
+        margin-bottom: 10px;
+    }
+
+}
+}

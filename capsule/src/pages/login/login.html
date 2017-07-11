@@ -1,0 +1,24 @@
+<ion-content padding id="login">
+
+<div class="title">
+  <h1>TimeCapsule LOGIN</h1>
+</div>
+
+<div class="loginForm">
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Useremail</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="userData.user_id"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="userData.user_pw"></ion-input>
+    </ion-item>
+
+    <button ion-button block color="dark" (click)="login()">login</button>
+
+  </ion-list>
+</div>
+
+</ion-content>
