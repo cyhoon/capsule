@@ -1,0 +1,92 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+
+
+@IonicPage()
+@Component({
+  selector: 'page-list',
+  templateUrl: 'list.html',
+})
+export class ListPage {
+
+  responseData: any;
+  requestUserId = { "userId": "" };
+  youngh: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public authServiceProvider: AuthServiceProvider) { 
+      const data = JSON.parse(localStorage.getItem('userData'));
+      this.requestUserId.userId = data['user_id']; // 인증에 요청할 회원 아이디
+
+      this.youngh = [
+        // {"name": "Hello1", "code": 1},
+        // {"name": "Hello2", "code": 2},
+        // {"name": "Hello3", "code": 3},
+        // {"name": "Hello4", "code": 4}
+      ];
+
+      this.loadCapsule();
+
+      console.log("data : " + this.requestUserId.userId);
+  }
+
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ListPage');
+  }
+
+  loadCapsule() {
+    this.authServiceProvider.postData(this.requestUserId, '/capsuleList.php').then((result) => {
+      this.responseData = result;
+
+      console.log(JSON.stringify(this.responseData[1]));
+
+      var message = this.responseData[0]['Message'];
+
+      if(message = "success") { // 캡슐이 있을때
+        
+        for(var i=1; i<this.responseData.length; i++) {
+
+          /**
+           *  capsuleDate
+           *  capsuleExpire
+           *  capsuleName
+           *  capsulePK
+           * 
+           */
+
+
+          // this.youngh.push(this.responseData[i]);
+
+          var capsuleDate = this.responseData[i]['capsuleDate'];
+          var capsuleExpire = this.responseData[i]['capsuleExpire'];
+          var capsuleName = this.responseData[i]['capsuleName'];
+          var capsulePK = this.responseData[i]['capsulePK'];
+          
+          var temp = [{name: capsuleName, expire: capsuleExpire}];
+
+          this.youngh.push(temp);
+
+          // console.log(this.responseData[1]);
+
+          // console.log("response data : " + this.responseData[i]['capsulePK']);
+          // console.log("response data : " + this.responseData[i]['capsuleName']);
+          // console.log("response data : " + this.responseData[i]['capsuleDate']);
+          // console.log("response data : " + this.responseData[i]['capsuleExpire']);
+
+        }
+
+        console.log( "this youngh : " + this.youngh);
+
+      } else { // 캡슐이 없을때
+        
+
+
+      }
+
+    });
+  }
+
+
+}

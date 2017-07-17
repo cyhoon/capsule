@@ -19,6 +19,7 @@ import { HttpModule } from '@angular/http';
 import { MainPage } from '../pages/main/main';
 import { MainComponent } from '../components/main/main';
 import { PushPage } from '../pages/push/push';
+import { ListPage } from '../pages/list/list';
 
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
@@ -37,7 +38,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     SignupPage,
     MainPage,
     MainComponent,
-    PushPage
+    PushPage,
+    ListPage
   ],
   imports: [
     BrowserModule,HttpModule,
@@ -54,7 +56,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     LoginPage,
     SignupPage,
     MainPage,
-    PushPage
+    PushPage,
+    ListPage
   ],
   providers: [
     StatusBar,

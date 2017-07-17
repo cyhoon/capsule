@@ -1,0 +1,23 @@
+page-list {
+.capsule {
+    margin-top: 30px;
+    .list {
+        width: 100%;
+        border: 1px solid black;
+        padding: 5px;
+        text-align: right;
+    }
+
+    a { 
+        text-decoration: none;
+        color: black;
+    }
+
+    img {
+        float: left;
+        width: 30%;
+        padding-top: 15px;
+        padding-right: 30px;
+    }
+}
+}

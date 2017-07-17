@@ -3,6 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { App, MenuController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { PushPage } from '../push/push';
+import { ListPage } from '../list/list';
+import { IntroPage } from '../intro/intro';
+
 /**
  * Generated class for the MainPage page.
  *
@@ -39,8 +42,13 @@ export class MainPage {
     this.navCtrl.push(PushPage);
   }
 
+  list() {
+    this.navCtrl.push(ListPage);
+  }
+
   logout() {
     localStorage.clear();
+    this.navCtrl.push(IntroPage);
   }
 
 }
