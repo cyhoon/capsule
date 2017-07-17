@@ -40,7 +40,7 @@ export class ListPage {
     this.authServiceProvider.postData(this.requestUserId, '/capsuleList.php').then((result) => {
       this.responseData = result;
 
-      console.log(JSON.stringify(this.responseData[1]));
+      console.log("전체 데이터 : "+this.responseData);
 
       var message = this.responseData[0]['Message'];
 
@@ -63,8 +63,9 @@ export class ListPage {
           var capsuleExpire = this.responseData[i]['capsuleExpire'];
           var capsuleName = this.responseData[i]['capsuleName'];
           var capsulePK = this.responseData[i]['capsulePK'];
-          
-          var temp = [{name: capsuleName, expire: capsuleExpire}];
+          var media_path = this.responseData[i]['media_path'];
+
+          var temp = [{name: capsuleName, expire: capsuleExpire, pk: capsulePK, image_path: media_path}];
 
           this.youngh.push(temp);
 
@@ -86,6 +87,10 @@ export class ListPage {
       }
 
     });
+  }
+
+  getOpen(pk) {
+    console.log(pk);
   }
 
 
