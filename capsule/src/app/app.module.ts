@@ -21,6 +21,8 @@ import { MainComponent } from '../components/main/main';
 import { PushPage } from '../pages/push/push';
 
 import { Camera } from '@ionic-native/camera';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Base64 } from '@ionic-native/base64';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,7 @@ import { Camera } from '@ionic-native/camera';
   ],
   providers: [
     StatusBar,
-    SplashScreen,AuthServiceProvider, Camera,
+    SplashScreen,AuthServiceProvider, Camera, ImagePicker, Base64,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider
   ]

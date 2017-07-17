@@ -25,15 +25,18 @@
         <span class="input-label form_label">4. 봉인할 기간을 선택해주세요.</span><br>
         <ion-item>
           <ion-label>Expire Date</ion-label>
-          <ion-datetime displayFormat="YY/MM/D" pickerFormat="YYYY/MM/D" [(ngModel)]="requestData.expiredate"></ion-datetime>
+          <ion-datetime displayFormat="YY/MM/D/HH:mm" min="2017" max="2027" pickerFormat="YYYY/MM/D/HH:mm" [(ngModel)]="requestData.expiredate"></ion-datetime>
         </ion-item>
       </label>
     </div>
-    <button ion-button full (click)="takePhoto()">
-      <ion-icon name="camera"></ion-icon> &nbsp;&nbsp; Take Photo
+    
+    <button ion-button full (click)="getPhoto()">
+      <ion-icon name="camera"></ion-icon> &nbsp;&nbsp; 사진 선택
     </button>
+
     <button ion-button full (click)="capsulePut()">캡슐 심기</button>
-    <ion-grid>
+    
+    <!--<ion-grid>
       <ion-row>
         <ion-col col-6 *ngFor="let photo of photos; let id = index">
           <ion-card class="block">
@@ -42,7 +45,7 @@
           </ion-card>
         </ion-col>
       </ion-row>
-    </ion-grid>
+    </ion-grid>-->
 
   </div>
 </ion-content>
