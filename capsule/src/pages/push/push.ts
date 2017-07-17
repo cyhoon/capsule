@@ -66,7 +66,7 @@ export class PushPage {
     this.requestData.friends = this.requestData.friends.trim();
     this.requestData.expiredate = this.requestData.expiredate.trim();
 
-    this.authServiceProvider.postData(this.requestData, '/test.php').then((result)=> {
+    this.authServiceProvider.postData(this.requestData, '/capsulePush.php').then((result)=> {
       this.responseData = result;
       console.log(this.responseData);
       // 1차 추출 데이터
