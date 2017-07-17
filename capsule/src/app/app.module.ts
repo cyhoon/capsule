@@ -23,6 +23,7 @@ import { PushPage } from '../pages/push/push';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import { Base64 } from '@ionic-native/base64';
   ],
   providers: [
     StatusBar,
-    SplashScreen,AuthServiceProvider, Camera, ImagePicker, Base64,
+    SplashScreen,AuthServiceProvider, Camera, ImagePicker, Base64, Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider
   ]

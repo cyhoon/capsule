@@ -4,6 +4,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker';
 import { Base64 } from '@ionic-native/base64';
+import { MainPage } from '../main/main';
+import { Geolocation } from '@ionic-native/geolocation';
 
 /**
  * Generated class for the PushPage page.
@@ -34,8 +36,8 @@ export class PushPage {
     "friends":"", // ok
     "expiredate": "", // ok
     "photos": "",
-    "latitude": "",
-    "longitude":""
+    "latitude": 1,
+    "longitude": 2
   };
 
   requestPhotos = {
@@ -48,16 +50,38 @@ export class PushPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera
   , private alertCtrl: AlertController, public authServiceProvider: AuthServiceProvider,
-    public imagePicker: ImagePicker, private base64: Base64) {
+    public imagePicker: ImagePicker, private base64: Base64, public alerCtrl: AlertController,
+    private geolocation: Geolocation) {
      const data = JSON.parse(localStorage.getItem('userData'));
       this.requestData.expiredate = "2017-07-20T07:20Z";
       this.requestData.user_id = data['user_id'];
-      this.requestData.latitude = "12.5";
-      this.requestData.longitude = "34.4";
+      this.getGeolocation();
+      // this.requestData.latitude = "12.5";
+      // this.requestData.longitude = "34.4";
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PushPage');
+  }
+
+  getGeolocation() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+
+      this.requestData.latitude = resp.coords.latitude;
+      this.requestData.longitude = resp.coords.longitude;
+
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+  }
+
+  doAlert(title,content) {
+    let alert = this.alerCtrl.create({
+      title: title,
+      message: content,
+      buttons: ['Ok']
+    });
+    alert.present()
   }
 
   capsulePut() {
@@ -67,8 +91,21 @@ export class PushPage {
     this.requestData.expiredate = this.requestData.expiredate.trim();
 
     this.authServiceProvider.postData(this.requestData, '/capsulePush.php').then((result)=> {
+      
       this.responseData = result;
-      console.log(this.responseData);
+      // console.log(this.responseData);
+      var code = this.responseData[0]['code'];
+      var message = this.responseData[0]['message'];
+      
+      if( code == "success" ) { // 회원가입 성공
+        
+        this.doAlert("캡슐 성공!", message);
+        this.navCtrl.push(MainPage);
+
+      } else {
+        this.doAlert("캡슐 실패!",message);
+      }
+
       // 1차 추출 데이터
       // {"user_id":"","capsule_name":"hello","friends":"fadsfa","expiredate":"2017-01-01","latitude":"","longitude":""}
       // 2차 추출 데이터
