@@ -15,16 +15,24 @@
 
 <ion-content padding>
   <div class="youngh">
-    <h1>안녕 아이오닉</h1>  <!-- 캡슐 이름 -->
+    <h1>{{capsuleData.capsule_name}}</h1>  <!-- 캡슐 이름 -->
 
-    <img src="http://10.80.163.99/youngh/uploads/20170718060707191918.jpeg" /> <!-- 캡슐 사진 -->
+    <img src="{{capsuleMedia.media_path}}" /> <!-- 캡슐 사진 -->
 
 
     <div class="box">
-      <p>나의 이름</p>
-    <p>친구 아이디</p>
-    <p>심은 날짜</p>
-    <p>풀린 날짜</p>
+      <p>나의 이름 : {{userDetails.user_name}}</p>
+      <p>심은 날짜 : {{capsuleData.capsule_date}}</p>
+      <p>풀린 날짜 : {{capsuleData.capsule_expire}}</p>
+      <p>위도 : {{capsuleData.capsule_latitude}}</p>
+      <p>경도 : {{capsuleData.capsule_longitude}}</p>
+
+      <h3>같이 심은 친구들</h3>
+      <ion-list>
+        <ion-item *ngFor="let friend of friendList">
+          <p>{{friend[0].name}}</p>
+        </ion-item>
+      </ion-list>
     </div>
 
     <h3>GPS 부분</h3> <!-- 좌표 ( 위도 , 경도 ) -->
