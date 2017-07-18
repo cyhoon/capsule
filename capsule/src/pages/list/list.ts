@@ -12,21 +12,27 @@ export class ListPage {
 
   responseData: any;
   requestUserId = { "userId": "" };
-  youngh: any;
+  myCapsule: any;
+  tagCapsule: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public authServiceProvider: AuthServiceProvider) { 
       const data = JSON.parse(localStorage.getItem('userData'));
       this.requestUserId.userId = data['user_id']; // 인증에 요청할 회원 아이디
 
-      this.youngh = [
+      this.myCapsule = [
         // {"name": "Hello1", "code": 1},
         // {"name": "Hello2", "code": 2},
         // {"name": "Hello3", "code": 3},
         // {"name": "Hello4", "code": 4}
       ];
 
-      this.loadCapsule();
+      this.tagCapsule = [
+        
+      ];
+
+      this.loadMyCapsule();
+      this.loadTagCapsule();
 
       console.log("data : " + this.requestUserId.userId);
   }
@@ -36,7 +42,39 @@ export class ListPage {
     console.log('ionViewDidLoad ListPage');
   }
 
-  loadCapsule() {
+  loadTagCapsule() {
+    this.authServiceProvider.postData(this.requestUserId, '/tagCapsuleList.php').then((result) => {
+      
+      this.responseData = result;
+
+      console.log("태그된 켑슐 데이터 : " +this.responseData);
+
+      var message = this.responseData[0]['Message'];
+      
+      if(message == "success") { // 태그된 캡슐이 있을때
+
+        for(var i=1; i<this.responseData.length; i++) {
+          
+          var capsuleDate = this.responseData[i]['capsuleDate'];
+          var capsuleExpire = this.responseData[i]['capsuleExpire'];
+          var capsuleName = this.responseData[i]['capsuleName'];
+          var capsulePK = this.responseData[i]['capsulePK'];
+          var media_path = this.responseData[i]['media_path'];
+
+          var temp = [{name: capsuleName, expire: capsuleExpire, pk: capsulePK, image_path: media_path}];
+
+          this.tagCapsule.push(temp);
+
+        }
+
+      } else { // 캡슐이 없을때
+
+      }
+
+    });
+  }
+
+  loadMyCapsule() {
     this.authServiceProvider.postData(this.requestUserId, '/capsuleList.php').then((result) => {
       this.responseData = result;
 
@@ -44,7 +82,7 @@ export class ListPage {
 
       var message = this.responseData[0]['Message'];
 
-      if(message = "success") { // 캡슐이 있을때
+      if(message == "success") { // 캡슐이 있을때
         
         for(var i=1; i<this.responseData.length; i++) {
 
@@ -67,7 +105,7 @@ export class ListPage {
 
           var temp = [{name: capsuleName, expire: capsuleExpire, pk: capsulePK, image_path: media_path}];
 
-          this.youngh.push(temp);
+          this.myCapsule.push(temp);
 
           // console.log(this.responseData[1]);
 
@@ -78,7 +116,7 @@ export class ListPage {
 
         }
 
-        console.log( "this youngh : " + this.youngh);
+        console.log( "this youngh : " + this.myCapsule);
 
       } else { // 캡슐이 없을때
         
