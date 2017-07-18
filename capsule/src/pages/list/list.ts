@@ -150,8 +150,19 @@ export class ListPage {
 
       if (code == "success") {
 
+        var capsule = {
+          capsule_latitude: "",
+          capsule_longitude: "",
+          capsule_pk: 0
+        };
+
+        var latitude = this.responseData[0]['latitude'];
+        var longitude = this.responseData[0]['longitude'];
+
+        capsule.capsule_latitude = latitude; // 위도
+        capsule.capsule_longitude = longitude; // 경도
+        localStorage.setItem('capsuleData', JSON.stringify(capsule));
         this.navCtrl.push(PopPage, pk);
-        console.log(pk);   
 
       } else { // failed..
 

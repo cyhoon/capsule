@@ -44,11 +44,7 @@ export class PopPage {
   map: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public authServiceProvider: AuthServiceProvider, private elementRef: ElementRef) {
-
-    const data = JSON.parse(localStorage.getItem('userData'));
-    this.userDetails.user_id = data['user_id'];
-    this.userDetails.user_name = data['user_name'];
+    public authServiceProvider: AuthServiceProvider) {
     
     this.friendList = [
 
@@ -62,18 +58,37 @@ export class PopPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PopPage');
-  }
+    const data = JSON.parse(localStorage.getItem('userData'));
+    this.userDetails.user_id = data['user_id'];
+    this.userDetails.user_name = data['user_name'];
 
-  ngAfterViewInit() {
+    /**
+     * 
+     * 오류나는 실행 순서
+     *  -> capsuleLoad() -> loadMap()
+     * 
+     *  위에 순서로하면 loadMap에서 nativeElement가 선언되지 않았다고 오류가 난다.
+     * 
+     *  그래서 나는 목록에서 클릭이 될때 latitude, longitude를 서버에서 가져와서
+     *  localStorage에 저장한 후 액티비티가 넘어간 후에 
+     *  저장한 localStorage에서 latitude, longitude를 가져와서 지도에 넣어준다...
+     * 
+     */
+    const capsuleData = JSON.parse(localStorage.getItem('capsuleData'));
+    this.capsuleData.capsule_latitude = capsuleData['capsule_latitude'];
+    this.capsuleData.capsule_longitude = capsuleData['capsule_longitude'];
+    this.requestPk = capsuleData['capsule_pk'];
+
     this.loadMap();
   }
 
 
   loadMap(){
     
+    
     console.log("latitude : " + this.capsuleData.capsule_latitude);
 
-    let latLng = new google.maps.LatLng(35.6624164, 128.4135811);
+    let latLng = new google.maps.LatLng(this.capsuleData.capsule_latitude, this.capsuleData.capsule_longitude);
  
     let mapOptions = {
       center: latLng,
