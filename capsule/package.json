@@ -24,6 +24,7 @@
         "@ionic-native/camera": "^3.14.0",
         "@ionic-native/core": "3.12.1",
         "@ionic-native/geolocation": "^4.0.1",
+        "@ionic-native/google-maps": "^4.0.1",
         "@ionic-native/image-picker": "^4.0.1",
         "@ionic-native/splash-screen": "3.12.1",
         "@ionic-native/status-bar": "3.12.1",

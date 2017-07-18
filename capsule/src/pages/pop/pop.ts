@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+
+declare var google;
 
 /**
  * Generated class for the PopPage page.
@@ -38,10 +40,11 @@ export class PopPage {
   };
 
   
-  
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public authServiceProvider: AuthServiceProvider) {
+    public authServiceProvider: AuthServiceProvider, private elementRef: ElementRef) {
 
     const data = JSON.parse(localStorage.getItem('userData'));
     this.userDetails.user_id = data['user_id'];
@@ -53,12 +56,59 @@ export class PopPage {
 
     this.requestPk.capsule_pk = navParams.data; // 파라미터 데이터는 캡슐에 pk 데이터임
     this.capsuleLoad();
+    // this.loadMap();
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PopPage');
   }
+
+  ngAfterViewInit() {
+    this.loadMap();
+  }
+
+
+  loadMap(){
+    
+    console.log("latitude : " + this.capsuleData.capsule_latitude);
+
+    let latLng = new google.maps.LatLng(35.6624164, 128.4135811);
+ 
+    let mapOptions = {
+      center: latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+ 
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+
+    this.addMarker();
+ 
+  }
+
+  addMarker() {
+    let marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: this.map.getCenter()
+    });
+
+    let content = "<h4>Information!</h4>";
+    
+    // this.addInfoWindow(marker, content);
+
+  }
+
+  // addInfoWindow(marker, content) {
+  //   let infoWindow = new google.maps.Infowindow({
+  //     content: content
+  //   });
+
+  //   google.maps.event.addListener(marker, 'click', () => {
+  //     infoWindow.open(this.map, marker);
+  //   });
+  // }
 
   capsuleLoad () {
 
