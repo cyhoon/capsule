@@ -17,10 +17,10 @@
     <div class="list">
       <label class="item item-input item-stacked-label">
         <span class="input-label form_label">1. 캡슐 이름을 입력해주세요</span><br>
-        <input type="text" placeholder="John" class="form_element" [(ngModel)]="requestData.capsule_name">
-        <span class="input-label form_label">3. 함께할 친구를 선택해주세요.</span><br>
-        <input type="text" placeholder="John" class="form_element" [(ngModel)]="requestData.friends">
-        <span class="input-label form_label">4. 봉인할 기간을 선택해주세요.</span><br>
+        <input type="text" placeholder="John" class="form_element" [(ngModel)]="requestData.capsule_name"><br>
+        <span class="input-label form_label">2. 함께할 친구를 선택해주세요.</span><br>
+        <input type="text" placeholder="John" class="form_element" [(ngModel)]="requestData.friends"><br>
+        <span class="input-label form_label">3. 봉인할 기간을 선택해주세요.</span><br>
         <ion-item>
           <ion-label>Expire Date</ion-label>
           <ion-datetime displayFormat="YY/MM/D/HH:mm" min="2017" max="2027" pickerFormat="YYYY/MM/D/HH:mm" [(ngModel)]="requestData.expiredate"></ion-datetime>

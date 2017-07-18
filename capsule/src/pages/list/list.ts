@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { PopPage } from '../pop/pop';
+import { AlertController } from 'ionic-angular'; // alert included
 
 
 @IonicPage()
@@ -12,11 +14,12 @@ export class ListPage {
 
   responseData: any;
   requestUserId = { "userId": "" };
+  requestPk = { "capsule_pk": 0};
   myCapsule: any;
   tagCapsule: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public authServiceProvider: AuthServiceProvider) { 
+    public authServiceProvider: AuthServiceProvider, public alerCtrl: AlertController) { 
       const data = JSON.parse(localStorage.getItem('userData'));
       this.requestUserId.userId = data['user_id']; // 인증에 요청할 회원 아이디
 
@@ -127,8 +130,38 @@ export class ListPage {
     });
   }
 
-  getOpen(pk) {
-    console.log(pk);
+  doAlert(title, content) {
+    let alert = this.alerCtrl.create({
+      title: title,
+      message: content,
+      buttons: ['확인']
+    });
+    alert.present();
+  }
+
+  getOpen(pk: number) {
+    this.requestPk.capsule_pk = pk;
+    this.authServiceProvider.postData(this.requestPk, '/expireCheck.php').then((result) => {
+      this.responseData = result;
+
+      console.log("response data : " + this.responseData);
+
+      var code = this.responseData[0]['code'];
+
+      if (code == "success") {
+
+        this.navCtrl.push(PopPage, pk);
+        console.log(pk);   
+
+      } else { // failed..
+
+        var message = this.responseData[0]['message'];
+        this.doAlert("캡슐", message);
+
+      }
+
+    });
+
   }
 
 

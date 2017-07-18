@@ -20,6 +20,7 @@ import { MainPage } from '../pages/main/main';
 import { MainComponent } from '../components/main/main';
 import { PushPage } from '../pages/push/push';
 import { ListPage } from '../pages/list/list';
+import { PopPage } from '../pages/pop/pop';
 
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
@@ -39,7 +40,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     MainPage,
     MainComponent,
     PushPage,
-    ListPage
+    ListPage,
+    PopPage
   ],
   imports: [
     BrowserModule,HttpModule,
@@ -57,7 +59,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     SignupPage,
     MainPage,
     PushPage,
-    ListPage
+    ListPage,
+    PopPage
   ],
   providers: [
     StatusBar,
