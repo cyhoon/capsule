@@ -5,4 +5,53 @@ page-main {
 .nav-text {
     padding-top: 10px;
 }
+
+.capsule {
+    width: 100%;
+    margin: 0 auto;
+
+    padding: 30px;
+    margin-top: 50px;
+    margin-bottom: 200px;
+
+    .image {
+        width: 40%;
+        float: left;
+
+        img {
+            width: 100%;
+            clear: both;
+            padding: 10px;
+        }
+    }
+
+    .text { 
+        width: 60%;
+        float: right;
+        text-align: center;
+        padding-top: 40px;
+        position: relative;
+
+        h2 { 
+            font-weight: bold;
+        }
+
+        p {
+            position: absolute;
+            top: 55px;
+            left: 45px;
+        }
+    }
+
+
+}
+
+.btn {
+    
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}
 }

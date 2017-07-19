@@ -21,7 +21,7 @@
 
 <ion-nav id="nav" #content [root]="rootPage"></ion-nav>
 
-<ion-header>
+<!--<ion-header>
 
   <ion-navbar>
     <button ion-button menuToggle>
@@ -32,18 +32,28 @@
     </ion-title>
   </ion-navbar>
 
-</ion-header>
+</ion-header>-->
 
 <ion-content padding>
 
-  <div class="">
+  <!--<div class="">
     <h1>Welcome to {{userDetails.user_name}} </h1>
     <h1>Your id : {{userDetails.user_id}}</h1>
     <h1>Your name : {{userDetails.user_name}}</h1>
+  </div>-->
+
+  <div class="capsule">
+    <div class="image">
+      <img src="assets/img/capsule.png" alt="Consulta Rapida">
+    </div>
+    <div class="text">
+      <h2>Time Capsule</h2>
+      <p>추억을 캡슐로</p>
+    </div>
   </div>
 
-  <button ion-button block color="dark" (click)="push()">캡슐 심기</button>
-  <button ion-button block color="dark" (click)="list()">캡슐 목록보기</button>
+  <button class="btn" ion-button block color="dark" (click)="push()">타임 캡슐 심기</button>
+  <button class="btn" ion-button block color="dark" (click)="list()">타임 캡슐 목록</button>
   <!--<button ion-button block color="dark" (click)="logout()"><a href="home" style="color: white; text-decoration: none;">로그아웃</a></button>-->
-  <button ion-button block color="dark" (click)="logout()">로그아웃</button>
+  <!--<button class="btn" ion-button block color="dark" (click)="logout()">로그아웃</button>-->
 </ion-content>
