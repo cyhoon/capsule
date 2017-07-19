@@ -11,8 +11,8 @@ page-main {
     margin: 0 auto;
 
     padding: 30px;
-    margin-top: 50px;
-    margin-bottom: 200px;
+    margin-top: 20%;
+    margin-bottom: 60%;
 
     .image {
         width: 40%;
@@ -37,9 +37,9 @@ page-main {
         }
 
         p {
-            position: absolute;
-            top: 55px;
-            left: 45px;
+            position: relative;
+            top: 70%;
+            
         }
     }
 
@@ -47,7 +47,6 @@ page-main {
 }
 
 .btn {
-    
     border-radius: 5px;
     margin-bottom: 15px;
     padding: 20px;
