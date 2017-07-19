@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController, Slides } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker';
@@ -12,6 +12,11 @@ import { Geolocation } from '@ionic-native/geolocation';
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
+ * 
+ * 이미지 피커 오류 해결법 :
+ *  일단 이미지 피커를 삭제한다. - cordova plugin remove cordova-plugin-image-picker
+ *  그 다음 이미지 피커를 git에서 가지고 온다 - cordova plugin add https://github.com/wymsee/cordova-imagePicker.git
+ * 
  */
 @IonicPage()
 @Component({
@@ -215,6 +220,42 @@ export class PushPage {
     ]
   });
   alert.present();
+}
+
+  @ViewChild(Slides) slides: Slides;
+
+  goToNextSlide() {
+    var index = this.slides.getActiveIndex();
+
+    
+
+    if(index < 3) {
+      if(!((index == 0 && (<HTMLInputElement>document.getElementById("formInput1")).value == "") ||
+      (index == 1 && (<HTMLInputElement>document.getElementById("formInput2")).value == "") ||
+      (index == 2 && this.requestData.photos == ""))) {
+        this.slides.slideTo((index + 1), 500);
+
+        if(index == 2) {
+          document.getElementById("pushNext").innerHTML="완료";
+        }
+      }
+    } else if(index == 3) {
+      if(((<HTMLInputElement>document.getElementById("formInput1")).value == "") && ((<HTMLInputElement>document.getElementById("formInput2")).value == "") && (this.requestData.photos == "")) {
+        
+      } else {
+        this.capsulePut();
+      }
+    }
+  }
+
+  slideChanged() {
+    var index = this.slides.getActiveIndex();
+
+    if(index < 3) {
+      document.getElementById("pushNext").innerHTML="다음";
+    } else if(index == 3) {
+      document.getElementById("pushNext").innerHTML="완료";
+    }
   }
 
 }

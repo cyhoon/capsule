@@ -5,29 +5,41 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar class="navbar">
-      
-      <ion-title class="navbar-title">타임 캡슐 심기</ion-title>
+
+  <ion-navbar class="nav">
+
+    <div class="row">
+      <h3 class="col" style="font-size: 15px;">타임 캡슐 심기</h3>
+    </div>
 
   </ion-navbar>
+
 </ion-header>
 
-<ion-content>
+<ion-content padding>
   <div class="form">
     <div class="list">
-      
-        <span class="input-label form_label">1. 캡슐 이름 입력해주세요.</span><br>
-        <input type="text" placeholder="귀요미들" class="form_element" [(ngModel)]="requestData.capsule_name"><br>
-        <span class="input-label form_label">2. 태그할 친구를 선택해주세요.</span><br>
-        <input type="text" placeholder="최영훈" class="form_element" [(ngModel)]="requestData.friends"><br>
-        <span class="input-label form_label">3. 심을 사진을 선택하세요.</span><br><br>
-        <button ion-button full color="dark" (click)="getPhoto()">사진 선택</button><br>
-        
-        <span class="input-label form_label">4. 봉인할 기간을 설정하세요.</span><br>
-        <ion-item>
-          <ion-datetime displayFormat="~ YY.MM.D HH:mm" min="2017" max="2027" pickerFormat="YYYY/MM/D/HH:mm" [(ngModel)]="requestData.expiredate"></ion-datetime>
-        </ion-item>
-      
+      <ion-slides (ionSlideDidChange)="slideChanged()">
+        <ion-slide>
+          <span class="input-label form_label">1. 캡슐 이름 입력해주세요</span><br>
+          <input type="text" placeholder="귀요미들" class="form_element" id="formInput1" [(ngModel)]="requestData.capsule_name">
+          <br>
+        </ion-slide>
+        <ion-slide>
+          <span class="input-label form_label">2. 태그할 친구를 선택해주세요.</span><br>
+          <input type="text" placeholder="최영훈" class="form_element" id="formInput2" [(ngModel)]="requestData.friends"><br>
+        </ion-slide>
+        <ion-slide>
+          <span class="input-label form_label">3. 심을 사진을 선택하세요.</span><br><br>
+          <button ion-button full color="dark" (click)="getPhoto()">사진 선택</button><br>
+        </ion-slide>
+        <ion-slide>
+          <span class="input-label form_label">4. 봉인할 기간을 설정하세요.</span><br>
+          <ion-item>
+            <ion-datetime displayFormat="~ YY.MM.D HH:mm" min="2017" max="2027" pickerFormat="YYYY/MM/D/HH:mm" [(ngModel)]="requestData.expiredate"></ion-datetime>
+          </ion-item>
+        </ion-slide>
+      </ion-slides>   
     </div>
 
     <!--<button ion-button full (click)="capsulePut()">캡슐 심기</button>-->
@@ -42,10 +54,8 @@
         </ion-col>
       </ion-row>
     </ion-grid>-->
-
   </div>
-  <br><br>
-  <hr>
-  <button ion-button color="dark" outline class="push" (click)="capsulePut()">완료</button>
-</ion-content>
 
+  <hr>
+  <button id="pushNext" (click)="goToNextSlide()">다음</button>
+</ion-content>
