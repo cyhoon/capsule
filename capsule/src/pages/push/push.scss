@@ -1,15 +1,18 @@
 page-push {
+
 .nav {
-    padding-top: 15px;
+    
 }
 .nav-text {
-    padding-top: 10px;
+    
 }
 .form {
-    margin-top: 30px;
+    padding: 20px;
+    margin-top: 15px;
 
     .form_label {
         font-size: 20px;
+        font-weight: bold;
     }
 
     .form_element{
@@ -30,6 +33,12 @@ page-push {
             margin-top: 5px;
             color: #ffffff;
         }
+    }
+
+    button {
+        border-radius: 5px;
+        padding: 20px;
+        font-weight: bold;
     }
 }
 }

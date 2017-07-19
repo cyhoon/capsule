@@ -28,10 +28,14 @@ export class MainPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     public app: App, menu: MenuController) {
+      
+      // this.navCtrl.setRoot(MainPage);
+      
       const data = JSON.parse(localStorage.getItem('userData'));
       this.userDetails.user_id = data['user_id'];
       this.userDetails.user_name = data['user_name'];
       console.log("data : " + this.userDetails.user_id);
+
   }
 
   ionViewDidLoad() {

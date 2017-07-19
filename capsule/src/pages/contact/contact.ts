@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { IntroPage } from '../intro/intro';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-contact',
@@ -14,7 +15,7 @@ export class ContactPage {
 
   logout() {
     localStorage.clear();
-    this.navCtrl.push(IntroPage);
+    this.navCtrl.push(HomePage);
   }
 
 }
