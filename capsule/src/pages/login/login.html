@@ -1,7 +1,9 @@
 <ion-content padding id="login">
 
-<div class="title">
-  <h1>TimeCapsule LOGIN</h1>
+<div id="title">
+  <img src="assets/img/capsule.png" col-4/>
+  <h1>Time Capsule</h1>
+  <h2>추억을 공유하다</h2>
 </div>
 
 <div class="loginForm">
@@ -16,7 +18,7 @@
       <ion-input type="password" [(ngModel)]="userData.user_pw"></ion-input>
     </ion-item>
 
-    <button ion-button block color="dark" (click)="login()">login</button>
+    <button ion-button block color="dark" (click)="login()">로그인</button>
 
   </ion-list>
 </div>

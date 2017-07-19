@@ -1,19 +1,46 @@
 page-signup {
 #signup{
-    background: white;
-    .title{
-        margin-top: 50%;
-        text-align: center;
-        margin-bottom: 30%;
+    background-color: white;
+    @import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'NanumSquare', sans-serif;
+      font-weight: 800;
+    }
+
+    img {
+      width: 40%;
+      margin-left: 30%;
+    }
+
+    #title {
+      margin-top: 25%;
+    }
+
+    #title h1 {
+      font-size: 1.6em;
+      text-align: center;
+      line-height: -1em;
+      margin-bottom: 0px;
+      margin-top: 0px;
+      font-weight: bold;
+    }
+
+    #title h2 {
+      font-size: 0.8em;
+      text-align: center;
+      margin-top: 0px;
     }
 
     .loginForm {
-        width: 100%;
-        margin: 0 auto;
+        width: 80%;
+        margin: 10% auto;
     }
 
     .loginForm button {
-        margin-top: 30px;
+        margin-top: 10%;
+        border-radius: 8px;
     }
 }
 }
