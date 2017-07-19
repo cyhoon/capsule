@@ -1,4 +1,11 @@
 page-main {
+
+    @import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+    * {
+      font-family: 'NanumSquare', sans-serif;
+      font-weight: 800;
+    }
+    
 .nav {
     padding-top: 15px;
 }

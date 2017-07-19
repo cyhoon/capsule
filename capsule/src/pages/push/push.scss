@@ -1,4 +1,10 @@
 page-push {
+    
+    @import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+    * {
+      font-family: 'NanumSquare', sans-serif;
+      font-weight: 800;
+    }
 
 .navbar {
     padding-top: 5%;
@@ -11,6 +17,8 @@ page-push {
     margin-right: 5px; 
     padding-left: 10px; 
     padding-right: 10px;
+    margin-top: 5%;
+    margin-bottom: 8%;
     border: 1px solid #222;
     // width: 80px;
     width: 25%;
