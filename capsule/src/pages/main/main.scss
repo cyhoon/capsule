@@ -29,7 +29,7 @@ page-main {
         width: 60%;
         float: right;
         text-align: center;
-        padding-top: 40px;
+        padding-top: 12%;
         position: relative;
 
         h2 { 
@@ -38,7 +38,7 @@ page-main {
 
         p {
             position: relative;
-            top: 70%;
+            top: 65%;
             
         }
     }
@@ -52,5 +52,20 @@ page-main {
     padding: 20px;
     text-align: center;
     font-weight: bold;
+}
+
+@media screen and (min-width: 1024px) {
+    .text {
+        font-size: 40px;
+
+        h2 {
+            font-size: 70px;
+        }
+    }
+
+    .btn {
+        padding: 50px;
+        font-size: 35px;
+    }
 }
 }
