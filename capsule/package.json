@@ -23,6 +23,8 @@
         "@ionic-native/base64": "^4.0.1",
         "@ionic-native/camera": "^3.14.0",
         "@ionic-native/core": "3.12.1",
+        "@ionic-native/fcm": "^4.0.1",
+        "@ionic-native/firebase": "^4.0.1",
         "@ionic-native/geolocation": "^4.0.1",
         "@ionic-native/google-maps": "^4.0.1",
         "@ionic-native/image-picker": "^4.0.1",
@@ -44,6 +46,7 @@
         "ionic-angular": "3.5.0",
         "ionic-plugin-keyboard": "^2.2.1",
         "ionicons": "3.0.0",
+        "phonegap-plugin-push": "^1.10.5",
         "rxjs": "5.4.0",
         "sw-toolbox": "3.6.0",
         "zone.js": "0.8.12"
@@ -64,9 +67,12 @@
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
             "ionic-plugin-keyboard": {},
-            "cordova-plugin-image-picker": {},
             "com-badrit-base64": {},
-            "cordova-plugin-geolocation": {}
+            "cordova-plugin-geolocation": {},
+            "phonegap-plugin-push": {
+                "SENDER_ID": "89198527784;"
+            },
+            "cordova-plugin-image-picker": {}
         },
         "platforms": [
             "android"

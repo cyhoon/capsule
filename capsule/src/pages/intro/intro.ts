@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
 import { SignupPage } from '../signup/signup';
+import { MainPage } from '../main/main';
 
 /**
  * Generated class for the IntroPage page.
@@ -22,6 +23,9 @@ export class IntroPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad IntroPage');
+
+    // const data = JSON.parse(localStorage.getItem('userData'));
+    
   }
 
   login() {
