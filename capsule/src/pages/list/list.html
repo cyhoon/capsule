@@ -6,9 +6,19 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>캡슐 목록</ion-title>
+  <ion-navbar no-border-bottom>
+    <ion-title>Searchbar</ion-title>
   </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-searchbar placeholder="Filter Items" (ionInput)="filterItems($event)"></ion-searchbar>
+  </ion-toolbar>
+
+  <ion-list class="itemsDisplay">
+    <ion-item class="itemsElement" *ngFor="let item of items">
+      {{ item }}
+    </ion-item>
+  </ion-list>
 
 </ion-header>
 

@@ -18,6 +18,28 @@ export class ListPage {
   myCapsule: any;
   tagCapsule: any;
 
+  items: Array<string>;
+
+  ngOnInit() {
+    this.setItems();
+  }
+
+  setItems() {
+    this.items = ['Orange', 'Banana', 'Pear', 'Tomato', 'Grape', 'Apple', 'Cherries', 'Cranberries', 'Raspberries', 'Strawberries', 'Watermelon'];
+  }
+
+  filterItems(ev: any) {
+    this.setItems();
+    let val = ev.value;
+
+    if (val && val.trim() !== '') {
+      this.items = this.items.filter(function(item) {
+        return item.toLowerCase().includes(val.toLowerCase());
+      });
+    }
+  }
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public authServiceProvider: AuthServiceProvider, public alerCtrl: AlertController) { 
       const data = JSON.parse(localStorage.getItem('userData'));
