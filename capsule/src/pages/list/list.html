@@ -6,37 +6,25 @@
 -->
 <ion-header>
 
-  <ion-navbar no-border-bottom>
-    <ion-title>Searchbar</ion-title>
+  <ion-navbar>
+    <ion-searchbar></ion-searchbar>
   </ion-navbar>
-
-  <ion-toolbar no-border-top>
-    <ion-searchbar placeholder="Filter Items" (ionInput)="filterItems($event)"></ion-searchbar>
-  </ion-toolbar>
-
-  <ion-list class="itemsDisplay">
-    <ion-item class="itemsElement" *ngFor="let item of items">
-      {{ item }}
-    </ion-item>
-  </ion-list>
 
 </ion-header>
 
 
 <ion-content padding>
-
-
-  <h3>내가 심은 캡슐 목록</h3>
-  <hr>
   <ion-list>
-
     <ion-item *ngFor="let capsule of myCapsule">
-      <ion-thumbnail item-start>
-        <img src="{{capsule[0].image_path}}" />
-      </ion-thumbnail>
-      <h3>{{capsule[0].name}}</h3>
-      <p>{{capsule[0].expire}}</p>
-      <button ion-button clear item-end (click)="getOpen(capsule[0].pk)"> &gt; </button>
+      <h3 id="username">{{capsule[0].user_name}}</h3>
+      <hr>
+      <!-- <ion-thumbnail item-start> -->
+      <img src="{{capsule[0].image_path}}" />
+      <!-- </ion-thumbnail> -->
+      <hr>
+      <h3 id="capsuleName">{{capsule[0].name}}</h3>
+      <p id="capsuleExpire">{{capsule[0].expire}}</p>
+      <!-- <button ion-button clear item-end (click)="getOpen(capsule[0].pk)"> &gt; </button> -->
     </ion-item>
 
   </ion-list>

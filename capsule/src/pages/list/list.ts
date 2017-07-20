@@ -37,6 +37,10 @@ export class ListPage {
         return item.toLowerCase().includes(val.toLowerCase());
       });
     }
+
+    var items = document.getElementById("itemsDisplay");
+
+    items.style.display = "block";
   }
 
 
@@ -85,10 +89,13 @@ export class ListPage {
           var capsuleName = this.responseData[i]['capsuleName'];
           var capsulePK = this.responseData[i]['capsulePK'];
           var media_path = this.responseData[i]['media_path'];
+          var user_name = this.responseData[i]['user_name'];
 
-          var temp = [{name: capsuleName, expire: capsuleExpire, pk: capsulePK, image_path: media_path}];
+          var temp = [{name: capsuleName, expire: capsuleExpire, pk: capsulePK, image_path: media_path, nameUser: user_name}];
 
           this.tagCapsule.push(temp);
+
+          console.log("tag capsule : "+this.tagCapsule[0]);
 
         }
 
@@ -127,8 +134,9 @@ export class ListPage {
           var capsuleName = this.responseData[i]['capsuleName'];
           var capsulePK = this.responseData[i]['capsulePK'];
           var media_path = this.responseData[i]['media_path'];
+          var user_name = this.responseData[i]['user_name'];
 
-          var temp = [{name: capsuleName, expire: capsuleExpire, pk: capsulePK, image_path: media_path}];
+          var temp = [{name: capsuleName, expire: capsuleExpire, pk: capsulePK, image_path: media_path, user_name: user_name}];
 
           this.myCapsule.push(temp);
 

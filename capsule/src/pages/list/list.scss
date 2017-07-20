@@ -1,15 +1,33 @@
 page-list {
 
-.itemsDisplay{
-    // display: none;
+    @import url(https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css);
+    * {
+      font-family: 'NanumSquare', sans-serif;
+      font-weight: 800;
+    }
+
+.item-block {
+    border: 3px solid gray;
+    margin-bottom: 10px;
 }
-.itemsDisplay .itemsElement{
-    display: none;
+
+#username {
+    font-size: 1em;
+    margin-top: 0px !important;
+}
+
+#capsuleName {
+    margin-left: 10px;
+}
+
+#capsuleExpire {
+    margin-left: 10px;
+    color: gray;
+    font-weight: 400;
 }
 
 .capsule {
     margin-top: 30px;
-    z-index: 10;
     .list {
         width: 100%;
         border: 1px solid black;
