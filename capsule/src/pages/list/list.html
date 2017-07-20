@@ -7,7 +7,8 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-searchbar></ion-searchbar>
+    <ion-title>캡슐 타임라인</ion-title>
+    <!--<ion-searchbar></ion-searchbar>-->
   </ion-navbar>
 
 </ion-header>
@@ -19,7 +20,7 @@
       <h3 id="username">{{capsule[0].user_name}}</h3>
       <hr>
       <!-- <ion-thumbnail item-start> -->
-      <img src="{{capsule[0].image_path}}" />
+      <img src="{{capsule[0].image_path}}" (click)="getOpen(capsule[0].pk)"/>
       <!-- </ion-thumbnail> -->
       <hr>
       <h3 id="capsuleName">{{capsule[0].name}}</h3>
@@ -29,17 +30,18 @@
 
   </ion-list>
 
-  <h3>내가 태그된 캡슐 목록</h3>
-  <hr>
+  <!--<h3>내가 태그된 캡슐 목록</h3>
+  <hr>-->
   <ion-list>
 
     <ion-item *ngFor="let tag of tagCapsule">
-      <ion-thumbnail item-start>
-        <img src="{{tag[0].image_path}}" />
-      </ion-thumbnail>
-      <h3>{{tag[0].name}}</h3>
-      <p>{{tag[0].expire}}</p>
-      <button ion-button clear item-end (click)="getOpen(tag[0].pk)"> &gt; </button>
+      <h3 id="username">{{tag[0].nameUser}}</h3>
+      <hr>
+      <img src="{{tag[0].image_path}}" (click)="getOpen(tag[0].pk)" />
+      <hr>
+      <h3 id="capsuleName">{{tag[0].name}}</h3>
+      <p id="capsuleExpire">{{tag[0].expire}}</p>
+      <!--<button ion-button clear item-end (click)="getOpen(tag[0].pk)"> &gt; </button>-->
     </ion-item>
 
   </ion-list>
